@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpcvsrest.grpc";
+
+package com.grpcvsrest.grpc;
+
+service AggregationService {
+    rpc Get(AggregationRequest) returns (AggregationResponse);
+}
+
+message AggregationRequest {
+    int32 item_id = 1;
+}
+
+message AggregationResponse {
+    int32 id = 1;
+    ResponseType type = 2;
+    string content = 3;
+}
+
+enum ResponseType {
+    UNDEFINED = 0;
+    PEREMOGA = 1;
+    ZRADA = 2;
+}
