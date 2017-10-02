@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpcvsrest.grpc";
+
+package com.grpcvsrest.grpc;
+
+service ContentService {
+    rpc Get(ContentRequest) returns (ContentResponse);
+}
+
+message ContentRequest {
+    int32 item_id = 1;
+}
+
+message ContentResponse {
+    int32 id = 1;
+    string content = 2;
+    int32 next_item_id = 3;
+}

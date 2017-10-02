@@ -17,6 +17,7 @@ message AggregationResponse {
     int32 id = 1;
     ResponseType type = 2;
     string content = 3;
+    int32 next_item_id = 4;
 }
 
 enum ResponseType {
