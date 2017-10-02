@@ -8,5 +8,13 @@ package com.grpcvsrest.grpc;
 import "aggregator.proto";
 
 service AggregationStreamingService {
-    rpc Subscribe(AggregationRequest) returns (stream AggregationResponse);
+    rpc Subscribe(AggregationStreamingRequest) returns (stream AggregationStreamingResponse);
+}
+
+message AggregationStreamingRequest {}
+
+message AggregationStreamingResponse {
+    int32 id = 1;
+    ResponseType type = 2;
+    string content = 3;
 }

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpcvsrest.grpc";
+
+package com.grpcvsrest.grpc;
+
+service ContentStreamingService {
+    rpc Subscribe(ContentStreamingRequest) returns (ContentStreamingResponse);
+}
+
+message ContentStreamingRequest {}
+
+message ContentStreamingResponse {
+    int32 id = 1;
+    string content = 2;
+}
