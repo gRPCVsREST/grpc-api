@@ -6,7 +6,7 @@ option java_package = "com.grpcvsrest.grpc";
 package com.grpcvsrest.grpc;
 
 service ContentStreamingService {
-    rpc Subscribe(ContentStreamingRequest) returns (ContentStreamingResponse);
+    rpc Subscribe(ContentStreamingRequest) returns (stream ContentStreamingResponse);
 }
 
 message ContentStreamingRequest {}
