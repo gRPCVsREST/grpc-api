@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpcvsrest.grpc";
+
+package com.grpcvsrest.grpc;
+
+import "aggregator.proto";
+
+service LeaderboardService {
+    rpc RecordVote(RecordVoteRequest) returns (RecordVoteResponse);
+}
+
+message RecordVoteRequest {
+    string username = 1;
+    ResponseType voted_category = 2;
+    bool right_guess = 3;
+}
+
+message RecordVoteResponse {
+}
