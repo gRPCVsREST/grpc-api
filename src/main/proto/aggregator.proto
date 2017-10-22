@@ -5,23 +5,33 @@ option java_package = "com.grpcvsrest.grpc";
 
 package com.grpcvsrest.grpc;
 
-service AggregationService {
-    rpc Get(AggregationRequest) returns (AggregationResponse);
+service AggregationStreamingService {
+    rpc Subscribe(AggregationStreamingRequest) returns (stream AggregationStreamingResponse);
 }
 
-message AggregationRequest {
-    int32 item_id = 1;
+service ResponseTypeService {
+    rpc GetResponseType(ResponseTypeRequest) returns (ResponseTypeResponse);
 }
 
-message AggregationResponse {
+message AggregationStreamingRequest {}
+
+message AggregationStreamingResponse {
     int32 id = 1;
     ResponseType type = 2;
     string content = 3;
-    int32 next_item_id = 4;
 }
 
 enum ResponseType {
     UNDEFINED = 0;
     PEREMOGA = 1;
     ZRADA = 2;
+}
+
+message ResponseTypeRequest {
+    int32 aggr_item_id = 1;
+}
+
+message ResponseTypeResponse {
+    int32 id = 1;
+    ResponseType type = 2;
 }
