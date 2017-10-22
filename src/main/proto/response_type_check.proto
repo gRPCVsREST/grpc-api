@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.grpcvsrest.grpc";
+
+package com.grpcvsrest.grpc;
+
+import "aggregator.proto";
+
+//Verifies if ResponseType of teh item was guessed (voted) right.
+service ResponseTypeCheckService {
+    rpc Check(TypeCheckRequest) returns (TypeCheckResponse);
+}
+
+message TypeCheckRequest {
+    int32 item_id = 1;
+    ResponseType voted = 2;
+}
+
+message TypeCheckResponse {
+    bool right_guess = 1;
+}
