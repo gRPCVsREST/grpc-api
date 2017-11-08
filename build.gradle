@@ -19,6 +19,7 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'maven-publish'
 
 protobuf {
     protoc {
@@ -43,7 +44,7 @@ targetCompatibility = 1.8
 startScripts.enabled = false
 
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
@@ -55,5 +56,27 @@ idea {
     module {
         sourceDirs += file("${projectDir}/src/generated/main/java")
         sourceDirs += file("${projectDir}/src/generated/main/grpc")
+    }
+}
+
+jar {}
+
+publishing {
+    repositories {
+        maven {
+            url "s3://grpcvsrest/snapshots"
+            authentication {
+                awsIm(AwsImAuthentication) // load from EC2 role or env var
+            }
+        }
+    }
+
+    publications {
+        mavenJava(MavenPublication) {
+            groupId "$group"
+            artifactId "$artifactId"
+            version "$version"
+            from components.java
+        }
     }
 }
