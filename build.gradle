@@ -3,12 +3,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.1'
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.5'
     }
 }
 
 plugins {
-    id "com.google.protobuf" version "0.8.1"
+    id "com.google.protobuf" version "0.8.5"
     id "java"
     id "application"
     id "idea"
@@ -23,11 +23,11 @@ apply plugin: 'maven-publish'
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.3.0"
+        artifact = "com.google.protobuf:protoc:3.5.1"
     }
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.6.1'
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.11.0'
         }
     }
     generateProtoTasks {
@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    compile 'io.grpc:grpc-all:1.6.1'
+    compile 'io.grpc:grpc-all:1.11.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 

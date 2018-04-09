@@ -23,10 +23,8 @@ message AggregationStreamingResponse {
 
 enum ResponseType {
     UNDEFINED = 0;
-    PEREMOGA = 1;
-    ZRADA = 2;
-    POKEMON = 3;
-    BIGDATA = 4;
+    CRYPTO = 1;
+    POKEMON = 2;
 }
 
 message ResponseTypeRequest {
